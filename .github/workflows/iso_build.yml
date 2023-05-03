@@ -26,7 +26,7 @@ jobs:
       matrix:
         EDITION: [xfce]
         BRANCH: [stable]
-        SCOPE: [minimal]
+        SCOPE: [minimal,full]
     steps:
       - 
         uses: styfle/cancel-workflow-action@0.9.0
@@ -45,7 +45,7 @@ jobs:
           branch: ${{ matrix.branch }}
           scope: ${{ matrix.scope }}
           version: ${{ steps.time.outputs.time }}
-          kernel: linux515
+          kernel: linux610
           code-name: "Custom-Build"
           release-tag: ${{ needs.prepare-release.outputs.release_tag }}
       -
