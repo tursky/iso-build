@@ -24,7 +24,7 @@ jobs:
     needs: [prepare-release]
     strategy:
       matrix:
-        EDITION: [prototype]
+        EDITION: [xfce]
         BRANCH: [stable]
         SCOPE: [minimal,full]
     steps:
