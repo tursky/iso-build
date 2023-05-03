@@ -1,8 +1,8 @@
 name: iso_build
 on:
   workflow_dispatch:
-  # schedule:
-  #  - cron:  '30 2 * * *'
+  schedule:
+    - cron:  '30 2 * * *'
 
 jobs:
   prepare-release:
@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         EDITION: [xfce]
-        BRANCH: [stable]
+        BRANCH: [unstable]
         SCOPE: [minimal,full]
     steps:
       - 
@@ -44,9 +44,9 @@ jobs:
           edition: ${{ matrix.edition }}
           branch: ${{ matrix.branch }}
           scope: ${{ matrix.scope }}
-          version: ${{ steps.time.outputs.time }}
+          version: ${{ steps.time.outputs.time }}-development
           kernel: linux61
-          code-name: "Custom-Build"
+          code-name: "Nightly-Build"
           release-tag: ${{ needs.prepare-release.outputs.release_tag }}
       -
         name: rollback
